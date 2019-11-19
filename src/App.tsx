@@ -5,7 +5,7 @@ import progressCombos from "./ProgressCombos";
 import filterViableProgressCombos, {
   ViableProgressCombo
 } from "./filterViableProgressCombos";
-import { ProgressAction } from "./Actions";
+import ActionCombo from "./ActionCombo";
 
 interface AppProps {}
 
@@ -108,22 +108,11 @@ export default class App extends React.Component<AppProps, IAppState> {
             <h2>Viable combos</h2>
           </Col>
           {viableCombos.map((viableCombo: ViableProgressCombo, index) => (
-            <Col xs={12} key={index}>
-              {viableCombo.combo.map(
-                (progressAction: ProgressAction, index) => (
-                  <React.Fragment key={index}>
-                    <span>
-                      {progressAction.name} ({progressAction.progress})
-                    </span>
-                    <span> > </span>
-                  </React.Fragment>
-                )
-              )}
-              {viableCombo.finishingAction.name} (
-              {viableCombo.finishingAction.progress}) (CP used:{" "}
-              {viableCombo.totalCp} Total progress:{" "}
-              {viableCombo.totalAccumulatedProgress})
-            </Col>
+            <ActionCombo
+              combo={viableCombo}
+              totalProgress={this.state.totalProgress}
+              key={index}
+            />
           ))}
         </Row>
       </Container>

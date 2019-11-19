@@ -3,7 +3,7 @@ export interface ProgressAction {
   cp: number;
   efficiencyMultiplier: number;
   additionalEfficiencyMultiplier: number;
-  progress?: number;
+  progress: number;
 }
 
 export function MuscleMemory(): ProgressAction {
@@ -11,7 +11,8 @@ export function MuscleMemory(): ProgressAction {
     name: "Muscle Memory",
     cp: 6,
     efficiencyMultiplier: 3,
-    additionalEfficiencyMultiplier: 2
+    additionalEfficiencyMultiplier: 2,
+    progress: 0
   };
 }
 
@@ -20,7 +21,8 @@ export function BasicSynthesis(): ProgressAction {
     name: "Basic Synthesis",
     cp: 0,
     efficiencyMultiplier: 1,
-    additionalEfficiencyMultiplier: 1
+    additionalEfficiencyMultiplier: 1,
+    progress: 0
   };
 }
 
@@ -29,6 +31,7 @@ export function CarefulSynthesis(): ProgressAction {
     name: "Careful Synthesis",
     cp: 7,
     efficiencyMultiplier: 1.2,
-    additionalEfficiencyMultiplier: 1
+    additionalEfficiencyMultiplier: 1,
+    progress: 0
   };
 }
