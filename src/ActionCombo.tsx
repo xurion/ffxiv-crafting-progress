@@ -3,26 +3,50 @@ import { Col } from "reactstrap";
 import { ProgressAction } from "./Actions";
 import { ViableProgressCombo } from "./filterViableProgressCombos";
 import Action from "./Action";
+import styled from "styled-components";
 
 interface ActionComboProps {
   combo: ViableProgressCombo;
   totalProgress: number;
 }
 
+const ActionComboWrapper = styled(Col)`
+  margin-bottom: 5px;
+`;
+
+const arrowSize = 15;
+const Arrow = styled.div`
+  border-bottom: ${arrowSize}px solid transparent;
+  border-left: ${arrowSize}px solid #bbb;
+  border-top: ${arrowSize}px solid transparent;
+  height: 0;
+  margin-top: 24px;
+  width: 0;
+`;
+const ArrowWrapper = styled.div`
+  display: inline-block;
+  height: 97px;
+  margin: 0 5px;
+`;
+
 export default (props: ActionComboProps) => {
   let accumulatedProgress = 0;
   return (
-    <Col xs={12}>
+    <ActionComboWrapper xs={12}>
       {props.combo.combo.map((progressAction: ProgressAction, index) => {
         accumulatedProgress += progressAction.progress;
         return (
-          <Action
-            name={progressAction.name}
-            progress={progressAction.progress}
-            accumulatedProgress={accumulatedProgress}
-            totalProgress={props.totalProgress}
-            key={index}
-          />
+          <React.Fragment key={index}>
+            <Action
+              name={progressAction.name}
+              progress={progressAction.progress}
+              accumulatedProgress={accumulatedProgress}
+              totalProgress={props.totalProgress}
+            />
+            <ArrowWrapper>
+              <Arrow />
+            </ArrowWrapper>
+          </React.Fragment>
         );
       })}
       <Action
@@ -33,9 +57,6 @@ export default (props: ActionComboProps) => {
         }
         totalProgress={props.totalProgress}
       />
-      {/* ({viableCombo.finishingAction.progress}) (CP used:{" "}
-        {viableCombo.totalCp} Total progress:{" "}
-        {viableCombo.totalAccumulatedProgress}) */}
-    </Col>
+    </ActionComboWrapper>
   );
 };

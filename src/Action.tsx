@@ -2,7 +2,19 @@ import getActionIcon from "./ActionIcons";
 import * as React from "react";
 import styled from "styled-components";
 
-const ActionWrapper = styled.span`
+interface ActionProps {
+  name: string;
+  progress: number;
+  accumulatedProgress: number;
+  totalProgress: number;
+}
+
+const ActionWrapper = styled.span<{
+  accumulatedProgress: number;
+  totalProgress: number;
+}>`
+  background: ${props =>
+    props.accumulatedProgress >= props.totalProgress ? "#dfd" : "#e0e0e0"};
   display: inline-block;
   font-size: 10px;
   padding: 8px;
@@ -18,17 +30,13 @@ const ActionProgress = styled.span`
   width: 100%;
 `;
 
-interface ActionProps {
-  name: string;
-  progress: number;
-  accumulatedProgress: number;
-  totalProgress: number;
-}
-
 export default class Action extends React.Component<ActionProps> {
   render() {
     return (
-      <ActionWrapper>
+      <ActionWrapper
+        accumulatedProgress={this.props.accumulatedProgress}
+        totalProgress={this.props.totalProgress}
+      >
         <ActionImage
           src={getActionIcon(this.props.name)}
           width={60}
