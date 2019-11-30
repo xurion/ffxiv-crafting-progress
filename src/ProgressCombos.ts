@@ -2,7 +2,8 @@ import {
   MuscleMemory,
   BasicSynthesis,
   CarefulSynthesis,
-  ProgressAction
+  ProgressAction,
+  FinalAppraisal
 } from "./Actions";
 
 export interface ProgressCombo {
@@ -36,7 +37,10 @@ const combos: ProgressCombo[] = [
     combo: [CarefulSynthesis(), CarefulSynthesis()],
     finishingAction: BasicSynthesis()
   },
-  //{ combo: [MuscleMemory(), FinalAppriasal(), BasicSynthesis()], finishingAction: BasicSynthesis() },
+  {
+    combo: [MuscleMemory(), FinalAppraisal(), BasicSynthesis()],
+    finishingAction: BasicSynthesis()
+  },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis()],
     finishingAction: CarefulSynthesis()

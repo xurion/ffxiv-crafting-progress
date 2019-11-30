@@ -16,6 +16,7 @@ export default (
   progressCombos.forEach((progressCombo: ProgressCombo) => {
     let accumulatedProgress = 0;
     let previousMultiplier = 1;
+    let nextProgressLimitProgressByOne = false;
     let totalCp = 0;
 
     progressCombo.combo.forEach((progressAction: ProgressAction) => {
@@ -25,11 +26,24 @@ export default (
           previousMultiplier
       );
 
-      accumulatedProgress += actionProgress;
-      progressAction.progress = actionProgress;
+      if (
+        accumulatedProgress + actionProgress > totalProgress &&
+        nextProgressLimitProgressByOne
+      ) {
+        progressAction.progress = totalProgress - accumulatedProgress - 1;
+        accumulatedProgress = totalProgress - 1;
+      } else {
+        accumulatedProgress += actionProgress;
+        progressAction.progress = actionProgress;
+      }
 
       totalCp += progressAction.cp;
-      previousMultiplier = progressAction.additionalEfficiencyMultiplier;
+
+      if (progressAction.efficiencyMultiplier > 0) {
+        previousMultiplier = progressAction.additionalEfficiencyMultiplier;
+      }
+
+      nextProgressLimitProgressByOne = progressAction.limitNextProgressByOne;
     });
 
     const finishingProgress = Math.floor(

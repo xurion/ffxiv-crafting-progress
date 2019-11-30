@@ -4,6 +4,7 @@ export interface ProgressAction {
   efficiencyMultiplier: number;
   additionalEfficiencyMultiplier: number;
   progress: number;
+  limitNextProgressByOne: boolean;
 }
 
 export function MuscleMemory(): ProgressAction {
@@ -12,7 +13,8 @@ export function MuscleMemory(): ProgressAction {
     cp: 6,
     efficiencyMultiplier: 3,
     additionalEfficiencyMultiplier: 2,
-    progress: 0
+    progress: 0,
+    limitNextProgressByOne: false
   };
 }
 
@@ -22,7 +24,8 @@ export function BasicSynthesis(): ProgressAction {
     cp: 0,
     efficiencyMultiplier: 1,
     additionalEfficiencyMultiplier: 1,
-    progress: 0
+    progress: 0,
+    limitNextProgressByOne: false
   };
 }
 
@@ -32,6 +35,18 @@ export function CarefulSynthesis(): ProgressAction {
     cp: 7,
     efficiencyMultiplier: 1.2,
     additionalEfficiencyMultiplier: 1,
-    progress: 0
+    progress: 0,
+    limitNextProgressByOne: false
+  };
+}
+
+export function FinalAppraisal(): ProgressAction {
+  return {
+    name: "Final Appraisal",
+    cp: 1,
+    efficiencyMultiplier: 0,
+    additionalEfficiencyMultiplier: 1,
+    progress: 0,
+    limitNextProgressByOne: true
   };
 }
