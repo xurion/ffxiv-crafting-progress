@@ -9,17 +9,19 @@ import ActionCombo from "./ActionCombo";
 
 interface AppProps {}
 
-interface IAppState {
+interface AppState {
   totalProgress: number;
   hundredPercentEfficiencyProgress: number;
 }
 
-export default class App extends React.Component<AppProps, IAppState> {
+export default class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
+    const defaults = this.getDefaultValues();
     this.state = {
-      totalProgress: 2100,
-      hundredPercentEfficiencyProgress: 1000
+      totalProgress: defaults.totalProgress,
+      hundredPercentEfficiencyProgress:
+        defaults.hundredPercentEfficiencyProgress
     };
 
     this.handleTotalProgressChange = this.handleTotalProgressChange.bind(this);
@@ -32,14 +34,49 @@ export default class App extends React.Component<AppProps, IAppState> {
     this.handleHundredPercentEfficiencyProgressChange = this.handleHundredPercentEfficiencyProgressChange.bind(
       this
     );
+    this.persistTotalProgress = this.persistTotalProgress.bind(this);
+    this.setTotalProgress = this.setTotalProgress.bind(this);
+    this.increaseTotalProgress = this.increaseTotalProgress.bind(this);
+    this.decreaseTotalProgress = this.decreaseTotalProgress.bind(this);
   }
+
+  persistTotalProgress(progress: number) {
+    window.localStorage.setItem("totalProgress", progress.toString());
+  }
+
+  setTotalProgress(totalProgress: number) {
+    this.setState({ totalProgress });
+    this.persistTotalProgress(totalProgress);
+  }
+
+  increaseTotalProgress(increment: number = 1) {
+    this.setTotalProgress(this.state.totalProgress + increment);
+  }
+
+  decreaseTotalProgress(decrement: number = 1) {
+    this.setTotalProgress(this.state.totalProgress - decrement);
+  }
+
+  getDefaultValues = () => {
+    const storedTotalProgress = window.localStorage.getItem("totalProgress");
+    const storedHundredPercentEfficiencyProgress = window.localStorage.getItem(
+      "hundredPercentEfficiencyProgress"
+    );
+
+    return {
+      totalProgress: storedTotalProgress ? parseInt(storedTotalProgress) : 350,
+      hundredPercentEfficiencyProgress: storedHundredPercentEfficiencyProgress
+        ? parseInt(storedHundredPercentEfficiencyProgress)
+        : 100
+    };
+  };
 
   handleFieldFocus = (event: React.FocusEvent<HTMLInputElement>) =>
     event.target.select();
 
   handleTotalProgressChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = parseInt(event.target.value);
-    this.setState({ totalProgress: isNaN(value) ? 0 : value });
+    this.setTotalProgress(isNaN(value) ? 0 : value);
   }
 
   handleHundredPercentEfficiencyProgressChange(
@@ -53,9 +90,9 @@ export default class App extends React.Component<AppProps, IAppState> {
 
   handleTotalProgressKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowUp") {
-      this.setState({ totalProgress: this.state.totalProgress + 1 });
+      this.increaseTotalProgress();
     } else if (event.key === "ArrowDown") {
-      this.setState({ totalProgress: this.state.totalProgress - 1 });
+      this.decreaseTotalProgress();
     }
   }
 
