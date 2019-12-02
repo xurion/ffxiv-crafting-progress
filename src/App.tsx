@@ -6,6 +6,7 @@ import filterViableProgressCombos, {
   ViableProgressCombo
 } from "./filterViableProgressCombos";
 import ActionCombo from "./ActionCombo";
+import styled from "styled-components";
 
 interface AppProps {}
 
@@ -13,6 +14,10 @@ interface AppState {
   totalProgress: number;
   hundredPercentEfficiencyProgress: number;
 }
+
+const ViableCombosTitle = styled.h2`
+  margin-top: 15px;
+`;
 
 export default class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -142,7 +147,9 @@ export default class App extends React.Component<AppProps, AppState> {
             />
           </Col>
           <Col xs={12}>
-            <h2>Viable combos</h2>
+            <ViableCombosTitle className="text-center text-sm-left">
+              Viable Combos
+            </ViableCombosTitle>
           </Col>
           {viableCombos.map((viableCombo: ViableProgressCombo, index) => (
             <ActionCombo

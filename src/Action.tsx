@@ -21,7 +21,8 @@ const ActionWrapper = styled.span<{
   border-radius: 5px;
   display: inline-block;
   font-size: 10px;
-  padding: 5px 10px;
+  margin-bottom: 10px;
+  padding: 5px 7px;
   text-align: center;
 `;
 
