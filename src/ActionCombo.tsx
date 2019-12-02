@@ -88,6 +88,7 @@ export default (props: ActionComboProps) => {
                 progress={progressAction.progress}
                 accumulatedProgress={accumulatedProgress}
                 totalProgress={props.totalProgress}
+                boosted={progressAction.boosted}
               />
               <ArrowWrapper>
                 <Arrow />
@@ -102,6 +103,7 @@ export default (props: ActionComboProps) => {
             accumulatedProgress + props.combo.finishingAction.progress
           }
           totalProgress={props.totalProgress}
+          boosted={false}
         />
       </ActionComboInner>
     </ActionComboWrapper>

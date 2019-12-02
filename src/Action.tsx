@@ -7,14 +7,23 @@ interface ActionProps {
   progress: number;
   accumulatedProgress: number;
   totalProgress: number;
+  boosted: boolean;
 }
 
 const ActionWrapper = styled.span<{
   accumulatedProgress: number;
   totalProgress: number;
+  boosted: boolean;
 }>`
-  background: ${props =>
-    props.accumulatedProgress >= props.totalProgress ? "#dfd" : "#efefef"};
+  background: ${props => {
+    let bg = "#efefef";
+    if (props.boosted) {
+      bg = "#ccf";
+    } else if (props.accumulatedProgress >= props.totalProgress) {
+      bg = "#dfd";
+    }
+    return bg;
+  }};
   border: 1px solid
     ${props =>
       props.accumulatedProgress >= props.totalProgress ? "#70b970" : "#aaa"};
@@ -37,16 +46,20 @@ const ActionProgress = styled.span`
 
 export default class Action extends React.Component<ActionProps> {
   render() {
+    const title = `${this.props.name}${
+      this.props.boosted ? " (boosted by Muscle Memory)" : ""
+    }`;
     return (
       <ActionWrapper
         accumulatedProgress={this.props.accumulatedProgress}
         totalProgress={this.props.totalProgress}
+        boosted={this.props.boosted}
+        title={title}
       >
         <ActionImage
           src={getActionIcon(this.props.name)}
           width={60}
           alt={this.props.name}
-          title={this.props.name}
         />
         <ActionProgress>+{this.props.progress}</ActionProgress>
         <ActionProgress>
