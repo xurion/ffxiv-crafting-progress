@@ -11,8 +11,13 @@ interface ActionComboProps {
 }
 
 const ActionComboWrapper = styled(Col)`
+  background: #d6d6d6;
+  border-radius: 10px;
   margin-bottom: 5px;
   margin-top: 5px;
+  padding-bottom: 15px;
+  padding-right: 150px;
+  padding-top: 10px;
 `;
 
 const arrowSize = 15;
@@ -30,8 +35,20 @@ const ArrowWrapper = styled.div`
   margin: 0 5px;
 `;
 
-const Durability = styled.div``;
-const CP = styled.div``;
+const StatusText = styled.div`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  text-shadow: 0 0 3px #666;
+`;
+const Durability = styled(StatusText)`
+  top: 15px;
+`;
+const CP = styled(StatusText)`
+  top: 42px;
+`;
 
 export default (props: ActionComboProps) => {
   let accumulatedProgress = 0;

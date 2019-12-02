@@ -14,10 +14,14 @@ const ActionWrapper = styled.span<{
   totalProgress: number;
 }>`
   background: ${props =>
-    props.accumulatedProgress >= props.totalProgress ? "#dfd" : "#e0e0e0"};
+    props.accumulatedProgress >= props.totalProgress ? "#dfd" : "#efefef"};
+  border: 1px solid
+    ${props =>
+      props.accumulatedProgress >= props.totalProgress ? "#70b970" : "#aaa"};
+  border-radius: 5px;
   display: inline-block;
   font-size: 10px;
-  padding: 8px;
+  padding: 5px 10px;
   text-align: center;
 `;
 
