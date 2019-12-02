@@ -12,6 +12,7 @@ interface ActionComboProps {
 
 const ActionComboWrapper = styled(Col)`
   margin-bottom: 5px;
+  margin-top: 5px;
 `;
 
 const arrowSize = 15;
@@ -29,10 +30,15 @@ const ArrowWrapper = styled.div`
   margin: 0 5px;
 `;
 
+const Durability = styled.div``;
+const CP = styled.div``;
+
 export default (props: ActionComboProps) => {
   let accumulatedProgress = 0;
   return (
     <ActionComboWrapper xs={12}>
+      <Durability>Durability: {props.combo.durability}</Durability>
+      <CP>CP: {props.combo.totalCp}</CP>
       {props.combo.combo.map((progressAction: ProgressAction, index) => {
         accumulatedProgress += progressAction.progress;
         return (

@@ -8,95 +8,133 @@ import {
 
 export interface ProgressCombo {
   combo: ProgressAction[];
+  durability: number;
   finishingAction: ProgressAction;
 }
 
 const combos: ProgressCombo[] = [
-  //10 durability
-  { combo: [], finishingAction: BasicSynthesis() },
-  { combo: [], finishingAction: CarefulSynthesis() },
-  { combo: [], finishingAction: MuscleMemory() },
+  //10 Durability
+  { combo: [], finishingAction: BasicSynthesis(), durability: 10 },
+  { combo: [], finishingAction: CarefulSynthesis(), durability: 10 },
+  { combo: [], finishingAction: MuscleMemory(), durability: 10 },
 
-  //20 durability
-  { combo: [BasicSynthesis()], finishingAction: BasicSynthesis() },
-  { combo: [CarefulSynthesis()], finishingAction: BasicSynthesis() },
-  { combo: [CarefulSynthesis()], finishingAction: CarefulSynthesis() },
-  { combo: [MuscleMemory()], finishingAction: BasicSynthesis() },
-  { combo: [MuscleMemory()], finishingAction: CarefulSynthesis() },
+  //20 Durability
+  {
+    combo: [BasicSynthesis()],
+    finishingAction: BasicSynthesis(),
+    durability: 20
+  },
+  {
+    combo: [CarefulSynthesis()],
+    finishingAction: BasicSynthesis(),
+    durability: 20
+  },
+  {
+    combo: [CarefulSynthesis()],
+    finishingAction: CarefulSynthesis(),
+    durability: 20
+  },
+  {
+    combo: [MuscleMemory()],
+    finishingAction: BasicSynthesis(),
+    durability: 20
+  },
+  {
+    combo: [MuscleMemory()],
+    finishingAction: CarefulSynthesis(),
+    durability: 20
+  },
 
-  //30 durability
+  //30 Durability
   {
     combo: [BasicSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [CarefulSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [MuscleMemory(), FinalAppraisal(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 30
   },
   {
     combo: [MuscleMemory(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [MuscleMemory(), CarefulSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 30
   },
   {
     combo: [MuscleMemory(), CarefulSynthesis()],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 30
   },
 
-  //40 durability
+  //40 Durability
   {
     combo: [BasicSynthesis(), BasicSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [CarefulSynthesis(), BasicSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [CarefulSynthesis(), CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 40
   },
   {
     combo: [MuscleMemory(), BasicSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [MuscleMemory(), CarefulSynthesis(), BasicSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [MuscleMemory(), CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 40
   },
   {
     combo: [MuscleMemory(), CarefulSynthesis(), CarefulSynthesis()],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 40
   },
 
-  //50 durability
+  //50 Durability
   {
     combo: [
       BasicSynthesis(),
@@ -104,7 +142,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -113,7 +152,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -122,7 +162,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -131,7 +172,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -140,7 +182,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -149,7 +192,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -158,7 +202,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -167,7 +212,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -176,7 +222,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -185,7 +232,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 50
   },
   {
     combo: [
@@ -194,10 +242,11 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 50
   },
 
-  //60 durability
+  //60 Durability
   {
     combo: [
       BasicSynthesis(),
@@ -206,7 +255,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -216,7 +266,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -226,7 +277,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -236,7 +288,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -246,7 +299,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -256,7 +310,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -266,7 +321,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -276,7 +332,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -286,7 +343,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -296,7 +354,8 @@ const combos: ProgressCombo[] = [
       BasicSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -306,7 +365,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       BasicSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -316,7 +376,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: BasicSynthesis()
+    finishingAction: BasicSynthesis(),
+    durability: 60
   },
   {
     combo: [
@@ -326,7 +387,8 @@ const combos: ProgressCombo[] = [
       CarefulSynthesis(),
       CarefulSynthesis()
     ],
-    finishingAction: CarefulSynthesis()
+    finishingAction: CarefulSynthesis(),
+    durability: 60
   }
 ];
 

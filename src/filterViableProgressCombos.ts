@@ -19,7 +19,7 @@ export default (
     let nextProgressLimitProgressByOne = false;
     let totalCp = 0;
 
-    progressCombo.combo.forEach((progressAction: ProgressAction) => {
+    let bailed = progressCombo.combo.some((progressAction: ProgressAction) => {
       const actionProgress = Math.floor(
         hundredPercentEfficiencyProgress *
           progressAction.efficiencyMultiplier *
@@ -37,6 +37,10 @@ export default (
         progressAction.progress = actionProgress;
       }
 
+      if (accumulatedProgress >= totalProgress) {
+        return true;
+      }
+
       totalCp += progressAction.cp;
 
       if (progressAction.efficiencyMultiplier > 0) {
@@ -44,7 +48,13 @@ export default (
       }
 
       nextProgressLimitProgressByOne = progressAction.limitNextProgressByOne;
+
+      return false;
     });
+
+    if (bailed) {
+      return;
+    }
 
     const finishingProgress = Math.floor(
       hundredPercentEfficiencyProgress *
