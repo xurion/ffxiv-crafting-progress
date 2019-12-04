@@ -15,8 +15,16 @@ interface AppState {
   hundredPercentEfficiencyProgress: number;
 }
 
+const AppContainer = styled(Container)`
+  margin-top: 15px;
+`;
+
 const ViableCombosTitle = styled.h2`
   margin-top: 15px;
+`;
+
+const FooterNote = styled(Col)`
+  margin: 10px 0;
 `;
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -125,11 +133,11 @@ export default class App extends React.Component<AppProps, AppState> {
     );
 
     return (
-      <Container>
+      <AppContainer>
         <Header />
         <Row>
           <Col xs={12} sm={6}>
-            Total Progress:{" "}
+            Recipe Progress Requirement:{" "}
             <Input
               value={this.state.totalProgress}
               onFocus={this.handleFieldFocus}
@@ -138,7 +146,7 @@ export default class App extends React.Component<AppProps, AppState> {
             />
           </Col>
           <Col xs={12} sm={6}>
-            100% efficiency progress:{" "}
+            Your 100% Progress:{" "}
             <Input
               value={this.state.hundredPercentEfficiencyProgress}
               onFocus={this.handleFieldFocus}
@@ -159,7 +167,22 @@ export default class App extends React.Component<AppProps, AppState> {
             />
           ))}
         </Row>
-      </Container>
+        <Row>
+          <FooterNote className="text-center small">
+            Created by{" "}
+            <a
+              href="https://eu.finalfantasyxiv.com/lodestone/character/2387352"
+              target="_blank"
+            >
+              Xurion Uroxin
+            </a>{" "}
+            of Cerberus |{" "}
+            <a href="https://github.com/xurion" target="_blank">
+              Github
+            </a>
+          </FooterNote>
+        </Row>
+      </AppContainer>
     );
   }
 }
