@@ -173,11 +173,16 @@ export default class App extends React.Component<AppProps, AppState> {
             <a
               href="https://eu.finalfantasyxiv.com/lodestone/character/2387352"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Xurion Uroxin
             </a>{" "}
             of Cerberus |{" "}
-            <a href="https://github.com/xurion" target="_blank">
+            <a
+              href="https://github.com/xurion"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github
             </a>
           </FooterNote>
