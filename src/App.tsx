@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import { Container, Row, Col, Input } from "reactstrap";
 import Header from "./Header";
 import progressCombos from "./ProgressCombos";
